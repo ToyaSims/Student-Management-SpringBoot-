@@ -1,8 +1,21 @@
 package student.Model;
 
 import java.time.LocalDate;
+import javax.persistence.*;
 
+@Entity
+@Table
 public class Student {
+    @Id
+    @SequenceGenerator(
+            name = "student_sequence",
+            sequenceName ="student_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_sequence"
+    )
     private Long ID;
     private String name,email;
     private int age;
